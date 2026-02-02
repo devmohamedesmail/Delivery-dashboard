@@ -5,7 +5,7 @@ import { FiHome, FiUsers, FiMapPin, FiSettings, FiMenu, FiX, FiUser } from 'reac
 import { FaTaxi } from 'react-icons/fa'
 import { IconType } from 'react-icons'
 import Link from 'next/link'
-import { useAuth } from '@/context/auth-provider'
+import { useAuth } from '@/hooks/useAuth'
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -49,7 +49,11 @@ export default function Sidebar() {
       icon: FiMapPin,
       href: '/admin/users',
     },
-
+    {
+      title: t('sidebar.settings'),
+      icon: FiMapPin,
+      href: '/admin/settings',
+    },
   ]
 
   // Prevent hydration mismatch

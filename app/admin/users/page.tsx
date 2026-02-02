@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import UserController from '@/controllers/delivery-app/users-controller';
-import type { User } from '@/controllers/delivery-app/users-controller';
+import UserController from '@/controllers/users-controller';
+import type { User } from '@/controllers/users-controller';
 import {
     Table,
     TableBody,

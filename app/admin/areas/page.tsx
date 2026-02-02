@@ -1,10 +1,10 @@
 'use client'
 import React, { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import AreaController from '@/controllers/delivery-app/areas-controller';
-import PlaceController from '@/controllers/delivery-app/places-controller';
-import type { Area } from '@/controllers/delivery-app/areas-controller';
-import type { Place } from '@/controllers/delivery-app/places-controller';
+import AreaController from '@/controllers/areas-controller';
+import PlaceController from '@/controllers/places-controller';
+import type { Area } from '@/controllers/areas-controller';
+import type { Place } from '@/controllers/places-controller';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {

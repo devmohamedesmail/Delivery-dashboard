@@ -1,11 +1,10 @@
 'use client'
 import { useTranslation } from 'react-i18next'
-import LanguageSwitcher from '../common/language-switcher'
+import LanguageSwitcher from './language-switcher'
 import { Bell, Mail } from 'lucide-react'
-import ToggleTheme from '../common/toggle-theme'
-import UserMenu from '../common/user-menu'
+import UserMenu from './user-menu'
 import { Button } from '../ui/button'
-import { useAuth } from '@/context/auth-provider'
+import ThemeToggle from './theme-toggle'
 export default function Header() {
   const { t } = useTranslation()
 
@@ -41,7 +40,7 @@ export default function Header() {
         </button>
 
         {/* Theme Toggle */}
-        <ToggleTheme />
+        <ThemeToggle />
 
         {/* User Menu */}
         <UserMenu />

@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import ProfileController, { UserProfile } from '@/controllers/delivery-app/profile-controller'
+import ProfileController, { UserProfile } from '@/controllers/profile-controller'
 import toast from 'react-hot-toast'
 import { Pencil, Camera, Loader2, User2, Mail, Phone, Shield } from 'lucide-react'
 

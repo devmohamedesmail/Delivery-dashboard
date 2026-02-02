@@ -1,18 +1,19 @@
 'use client'
-import {useEffect} from 'react'
-import LanguageSwitcher from "@/components/common/language-switcher";
-import { useAuth } from "@/context/auth-provider";
+import { useEffect } from 'react'
+import LanguageSwitcher from "@/components/ui/language-switcher";
+
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Home() {
   const { t } = useTranslation()
-  const { user } = useAuth();
+  const { user } = useAuth()
   const router = useRouter();
 
 
-   useEffect(() => {
+  useEffect(() => {
     if (user) {
       router.replace("/admin");
     } else {
@@ -20,11 +21,11 @@ export default function Home() {
     }
   }, [user, router]);
 
-  
+
   return (
-   <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen">
       Redirecting...
-     
+
     </div>
   );
 }

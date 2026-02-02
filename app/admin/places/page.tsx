@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useMemo } from 'react'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import PlaceController from '@/controllers/delivery-app/places-controller';
-import type { Place, StoreType } from '@/controllers/delivery-app/places-controller';
+import PlaceController from '@/controllers/places-controller';
+import type { Place, StoreType } from '@/controllers/places-controller';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -26,16 +26,17 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useAuth } from '@/context/auth-provider';
 import { Badge } from "@/components/ui/badge";
 import { Pencil, Trash2, Search, X, MapPin, Store } from "lucide-react";
 import toast from 'react-hot-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useAuth } from '@/hooks/useAuth';
+import Loading from '@/components/ui/loading';
 
 export default function Places() {
     const queryClient = useQueryClient();
     const { t, i18n } = useTranslation();
-    const { user } = useAuth();
+    const { user } = useAuth()
     const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [editingPlace, setEditingPlace] = useState<Place | null>(null);
@@ -525,6 +526,7 @@ export default function Places() {
                                     </div>
                                 </TableCell>
                             </TableRow>
+                           
                         ) : filteredPlaces && filteredPlaces.length > 0 ? (
                             filteredPlaces.map((place: Place) => (
                                 <TableRow key={place.id} className="hover:bg-muted/50 transition-colors">

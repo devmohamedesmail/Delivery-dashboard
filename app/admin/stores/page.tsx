@@ -1,12 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import StoreController from '@/controllers/delivery-app/stores-controller';
-import PlaceController from '@/controllers/delivery-app/places-controller';
-import StoreTypesController from '@/controllers/delivery-app/store-types-controller';
-import type { Store } from '@/controllers/delivery-app/stores-controller';
-import type { Place } from '@/controllers/delivery-app/places-controller';
-import type { StoreType } from '@/controllers/delivery-app/store-types-controller';
+import StoreController from '@/controllers/stores-controller';
+import PlaceController from '@/controllers/places-controller';
+import StoreTypesController from '@/controllers/store-types-controller';
+import type { Store } from '@/controllers/stores-controller';
+import type { Place } from '@/controllers/places-controller';
+import type { StoreType } from '@/controllers/store-types-controller';
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -51,8 +51,8 @@ export default function StoresPage() {
     const [editingStore, setEditingStore] = useState<Store | null>(null);
     const [logoPreview, setLogoPreview] = useState<string | null>(null);
     const [bannerPreview, setBannerPreview] = useState<string | null>(null);
- const [cookies] = useCookies(['access_token']);
-console.log("cookies",cookies?.access_token);
+    const [cookies] = useCookies(['access_token']);
+    console.log("cookies", cookies?.access_token);
     /* ================= FETCH STORES ================= */
     const { data: stores, isLoading } = useQuery({
         queryKey: ["stores"],
@@ -249,7 +249,7 @@ console.log("cookies",cookies?.access_token);
     };
 
     const handleDelete = (id: number) => {
-        console.log("store id",id);
+        console.log("store id", id);
         if (confirm('Are you sure you want to delete this store?')) {
             deleteMutation.mutate(id);
         }

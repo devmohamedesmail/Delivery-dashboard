@@ -5,18 +5,18 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useAuth } from '@/context/auth-provider'
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import toast from 'react-hot-toast';
 import { useCookies } from 'react-cookie';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useAuth } from '@/hooks/useAuth'
 
 export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false)
   const { t } = useTranslation();
-  const { login } = useAuth()
+  const { login } =useAuth();
   const router = useRouter()
   const [cookies] = useCookies(['access_token']);
   const [loginMethod, setLoginMethod] = useState<'email' | 'phone'>('email')
@@ -49,7 +49,7 @@ export default function LoginPage() {
         const role = result?.user?.role?.role
         if (result.success && role === "admin") {
           toast.success(t("auth.login_success"))
-          router.push('/delivery-app')
+          router.push('/admin')
         } else {
           toast.error(t("auth.login_failed"))
         }
@@ -85,9 +85,9 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <Tabs defaultValue="account" className="w-[400px] px-8 py-10">
-          <TabsList>
-            <TabsTrigger value="account" onClick={() => setLoginMethod('email')}>{t('auth.login_by_email')}</TabsTrigger>
+        <Tabs defaultValue="account" className=" px-8 py-10">
+          <TabsList className='bg-white dark:bg-gray-800 w-full'>
+            <TabsTrigger className='' value="account" onClick={() => setLoginMethod('email')}>{t('auth.login_by_email')}</TabsTrigger>
             <TabsTrigger value="password" onClick={() => setLoginMethod('phone')}>{t('auth.login_by_phone')}</TabsTrigger>
           </TabsList>
 

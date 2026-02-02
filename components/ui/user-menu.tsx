@@ -2,7 +2,7 @@
 import { ChevronDown, UserRound } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from '@/context/auth-provider'
+import { useAuth } from '@/hooks/useAuth'
 import {
     DropdownMenu,
     DropdownMenuContent,

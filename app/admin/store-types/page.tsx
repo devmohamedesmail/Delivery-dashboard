@@ -1,8 +1,8 @@
 'use client'
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import StoreTypesController from "@/controllers/delivery-app/store-types-controller";
-import type { StoreType } from "@/controllers/delivery-app/store-types-controller";
+import StoreTypesController from "@/controllers/store-types-controller";
+import type { StoreType } from "@/controllers/store-types-controller";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import * as Yup from 'yup'
@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import toast from 'react-hot-toast';
 import { Pencil, Trash2, Plus } from "lucide-react";
+import Loading from "@/components/ui/loading";
 
 export default function StoreTypesPage() {
     const { t, i18n } = useTranslation();
@@ -274,7 +275,7 @@ export default function StoreTypesPage() {
             {/* GRID VIEW */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {isLoading ? (
-                    <div className="col-span-full text-center py-10">Loading...</div>
+                    <div className="col-span-full text-center py-10"><Loading /></div>
                 ) : data && data.length > 0 ? (
                     data.map((storeType: StoreType) => (
                         <div key={storeType.id} className="bg-white rounded-lg shadow-md p-6 space-y-4">
